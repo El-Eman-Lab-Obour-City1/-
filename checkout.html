@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" type="image/x-icon" href="asd.png" />
+    <link rel="shortcut icon" type="image/png" href="asd.png" />
+  <title>معمل الإيمان</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Tajawal', sans-serif;
+      background: #f8f9fa;
+    }
+    .splash {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      animation: fadeOut 2s ease forwards;
+    }
+    .splash img {
+      width: 170px;
+      opacity: 0;
+      animation: zoomLogo 1.5s ease forwards;
+    }
+    @keyframes zoomLogo {
+      0% { transform: scale(0.5); opacity: 0; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+    .content {
+      display: none;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      position: relative;
+    }
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: transparent;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: #555;
+      left: 150px;
+    }
+    form {
+      background: white;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+    h2 {
+      font-size: 28px;
+      margin-bottom: 25px;
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 18px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 16px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+    button[type="submit"] {
+      background-color: #ef71aa;
+      color: white;
+      border: none;
+      margin-top: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+    button[type="submit"]:hover {
+      background-color: #e95c9e;
+    }
+  </style>
+</head>
+<body>
+
+  
+
+  <div class="container">
+    <h2>إتمام الحجز</h2>
+    <form id="bookingForm">
+      <label for="name">الاسم الثلاثي:</label>
+      <input type="text" id="name" required>
+
+      <label for="phone">رقم الهاتف:</label>
+      <input type="tel" id="phone" required pattern="[0-9]{10,15}">
+
+      <label for="type">نوع الحجز:</label>
+      <select id="type" required>
+        <option value="">-- اختر --</option>
+        <option value="سحب منزلي">سحب منزلي</option>
+        <option value="زيارة المعمل">زيارة المعمل</option>
+      </select>
+
+      <div id="addressSection">
+        <label for="address">العنوان:</label>
+        <input type="text" id="address" placeholder="اكتب عنوانك بالتفصيل">
+      </div>
+
+      <button type="submit">إرسال الحجز إلى واتساب</button>
+    </form>
+  </div>
+
+  <script>
+    const typeSelect = document.getElementById('type');
+    const addressSection = document.getElementById('addressSection');
+
+    typeSelect.addEventListener('change', () => {
+      addressSection.style.display = (typeSelect.value === 'سحب منزلي') ? 'block' : 'none';
+    });
+
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const type = document.getElementById('type').value;
+      const address = document.getElementById('address')?.value.trim() || "";
+
+      const cart = JSON.parse(localStorage.getItem('lab-cart')) || [];
+      const testsList = cart.map(item => `- ${item.name} (${item.price} ريال)`).join('\n');
+      const total = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
+
+      const msg = `📝 طلب حجز جديد:\n👤 الاسم: ${name}\n📞 الهاتف: ${phone}\n📍 نوع الحجز: ${type}\n${type === "سحب منزلي" ? `📦 العنوان: ${address}\n` : ""}🧪 التحاليل:\n${testsList}\n\n💰 الإجمالي: ${total} ريال`;
+
+      const whatsappNumber = "201110287335";
+      const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(msg)}`;
+      window.open(whatsappURL, '_blank');
+
+      localStorage.removeItem('lab-cart');
+    });
+  </script>
+
+</body>
+</html>

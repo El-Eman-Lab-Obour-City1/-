@@ -1,0 +1,135 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Tajawal', sans-serif;
+}
+.header {
+    background: linear-gradient(135deg, #5a1f62 0%, #5a1f62 100%);
+    color: white;
+    padding: 2rem 0;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.upload-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+.results-table {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+.table th {
+    background-color: #f1f7fd;
+    font-weight: 600;
+}
+.btn-primary {
+    background-color: #ef71aa;
+    border-color: #ef71aa;
+}
+.btn-primary:hover {
+    background-color: #fa4c9a;
+    border-color: #fa4c9a;
+}
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+.btn-danger:hover {
+    background-color: #bb2d3b;
+    border-color: #bb2d3b;
+}
+.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+.btn-success:hover {
+    background-color: #218838;
+    border-color: #218838;
+}
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+.btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #e0a800;
+}
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+}
+.btn-info:hover {
+    background-color: #138496;
+    border-color: #138496;
+}
+.pdf-link {
+    color: #d9534f;
+    text-decoration: none;
+}
+.pdf-link:hover {
+    text-decoration: underline;
+}
+.action-buttons {
+    white-space: nowrap;
+}
+.file-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 5px;
+}
+.payment-status {
+    display: inline-block;
+    padding: 0.35em 0.65em;
+    font-size: 0.75em;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+}
+.paid {
+    background-color: #28a745;
+    color: white;
+}
+.unpaid {
+    background-color: #dc3545;
+    color: white;
+}
+.search-box {
+    margin-bottom: 20px;
+}
+.search-box .input-group {
+    max-width: 500px;
+}
+.logo-container {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+}
+.logo-container img {
+    height: 150px;
+    width: auto;
+}
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+
+.toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1100;
+}
+.toast {
+    transition: all 0.3s ease;
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+}

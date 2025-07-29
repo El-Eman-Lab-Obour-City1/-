@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>معمل الايمان</title>
+  <link rel="shortcut icon" type="image/x-icon" href="asd.png" />
+    <link rel="shortcut icon" type="image/png" href="asd.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="qwe.css">
+  <style>
+     * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4rem 2rem;
+      background: linear-gradient(to left, #fefefe, #f0f0f0);
+      text-align: center;
+    }
+
+    .hero .conten {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      color: #333;
+    }
+
+    .apa {
+      margin-top: 1rem;
+      font-size: 1.2rem;
+      color: #000000;
+    }
+
+    .hero button  {
+      margin-top: 2rem;
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: #ef71aa;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+     .hero button a {
+        text-decoration: none;
+        color: #ffffff;
+     }
+
+    .hero button:hover {
+      background: #fa4c9a;
+    }
+
+    .hero img {
+      width: 100%;
+      max-width: 400px;
+      margin: 2rem auto;
+      border-radius: 1rem;
+    }
+
+    .features {
+      padding: 4rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      background: #fff;
+    }
+
+    .feature {
+      background: #fafafa;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature  {
+      color: #ef71aa;
+      margin-bottom: 1rem;
+    }
+
+    .azxcs{
+      color: #ef71aa;
+    }
+
+    .apa{
+        display: block;
+      }
+
+      .conten{
+        display: block;
+      }
+
+    
+
+    @media (max-width: 768px) {
+
+
+    
+      .hero {
+        flex-direction: column;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      
+
+    }
+
+
+
+    
+    header {
+      background-color: #fff;
+      padding: 2rem 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: relative;
+       display: flex;
+      
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-left: 20px;
+    }
+
+    
+     .menu-toggle {
+     
+              /* المسافة من أعلى الصفحة */
+    left: 20px; 
+     
+     
+     
+      border-radius: 5px;
+      font-size: 30px;
+      
+       
+    color: #000000;
+    background: none;
+    border: none;
+    cursor: pointer;
+  
+    
+      position: absolute;   /* تخليها ثابتة */
+         /* أو left لو حابة تحطيها في الجهة اليسار */
+    font-size: 30px;   /* حجم الأيقونة */
+    color: #000000;       /* لون الأيقونة */
+      /* شكل اليد عند المرور */
+       /* تخليها فوق كل العناصر */
+        display: none;
+         top: px;     
+    }
+
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #ef71aa;
+      font-weight: 700;
+      transition: 0.3s;
+       z-index: 999;
+    }
+
+    nav a:hover {
+      color: #fa4c9a;
+    }
+
+    
+ 
+    
+
+  
+
+  
+
+
+    
+
+    @media (max-width: 768px) {
+     
+
+      
+
+      .menu-toggle {
+        display: block;
+         z-index: 999;
+      }
+
+      nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #fff;
+        padding: 34px;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+         z-index: 999;
+      }
+
+      nav ul.active {
+        display: flex;
+        padding: 34px;
+         z-index: 999;
+
+      }
+
+      .logo {
+        justify-content: center;
+        width: 100%;
+         z-index: 999;
+         font-size: 11px;
+         padding-left: 80px;
+         height: 30px;
+         
+      }
+    
+   }
+
+      
+   .qwas{
+    size: 400px;
+
+   }
+
+
+    .logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-right: 20px;
+      
+    }
+
+    .logo img {
+      width: 80px;
+      margin-left: 10px;
+      font-size: 50px;
+      
+    }
+.azxcs{
+    color: #000;
+}
+
+ body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background: #f5f5f5;
+    }
+
+    .projects {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .title {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .project-card {
+      width: 100%;
+      max-width: 250px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      transform: scale(1.05);
+    }
+
+    .project-image img {
+      width: 100%;
+      display: block;
+    }
+
+    /* للهواتف */
+    @media (max-width: 768px) {
+      .content {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .project-card {
+        width: 90%;
+      }
+    }
+
+    .awds{
+      font-size: x-large;
+    }
+
+    .awd{
+      font-size: large;
+    }
+
+  </style>
+</head>
+<body>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #fff;
+      font-family: sans-serif;
+    }
+
+    .splash {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      animation: fadeOut 2s ease forwards;
+    }
+
+    .splash img {
+      width: 150px;
+      opacity: 0;
+      animation: zoomLogo 1.5s ease forwards;
+    }
+
+    @keyframes zoomLogo {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+
+    .content {
+      display: none;
+      padding: 40px;
+      text-align: center;
+    }
+  </style>
+
+
+  <!-- شاشة البداية باللوجو -->
+  <div class="splash" id="splash">
+    <img src="asd.png" alt="Logo">
+  </div>
+
+  <!-- محتوى الصفحة -->
+  
+
+  <script>
+    // بعد 2 ثانية من التحميل (مدة الأنيميشن)، أظهر المحتوى
+    setTimeout(() => {
+      document.getElementById('splash').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+    }, 2000);
+  </script>
+
+  <header>
+    <div class="logo">
+        
+      <img src="asd.png" alt="Alfa Logo">
+      <h2 class="azxcs">معمل الايمان</h2>
+       <button class="menu-toggle">☰</button>
+    </div>
+    
+    <nav>
+      <ul>
+         <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="عروض.html">عروض</a></li>
+           <li><a href="تحاليل.html">حجز تحليل أون لاين</a></li>             
+            <li><a href="الفروع .html">الفروع</a></li>
+            <li><a href="وظائف.html">وظائف</a></li>
+            <li><a href="من نحن.html">من نحن</a></li>
+            <li><a href="اتصل بنا.html">اتصل بنا</a></li>
+                        <li ><a class="ddd"  href="https://el-eman-lab-results.xo.je/">استلم تحليلك الان</a></li>
+
+
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="conten">
+      <h1>وظائف</h1>
+      <h5 class="apa">معمل الايمان</h5>
+    </div>
+    <img src="asd.png" alt="Family">
+  </section>
+       
+
+
+  
+
+
+  <div class="cvb">
+    <h2 class="وظائف">الرجاء ارسال السيرة الذاتيه على الواتس اب</h2>
+
+    <footer class="foote">
+        <div class="footer-container">
+          <a href="https://wa.me/+201110287335" class="icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp Icon">
+          </a>
+
+        </div>
+        </footer>
+
+
+   
+
+
+
+</div>
+
+    
+ 
+
+
+
+    
+
+
+
+    <footer class="footer">
+        <div class="footer-container">
+          <a href="https://wa.me/+201110287335"  class="icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp Icon">
+          </a>
+          <a href="https://www.google.com/maps/place/%D9%85%D8%B9%D9%85%D9%84+%D8%A7%D9%84%D8%A7%D9%8A%D9%85%D8%A7%D9%86+%D9%84%D9%84%D8%AA%D8%AD%D8%A7%D9%84%D9%8A%D9%84+%D8%A7%D9%84%D8%B7%D8%A8%D9%8A%D8%A9+%D8%A8%D9%85%D8%AF%D9%8A%D9%86%D9%87+%D8%A7%D9%84%D8%B9%D8%A8%D9%88%D8%B1%E2%80%AD/@30.2382693,31.4693079,733m/data=!3m2!1e3!4b1!4m6!3m5!1s0x145805d364fd88a9:0x1cea4d4e6f508947!8m2!3d30.2382693!4d31.4693079!16s%2Fg%2F11ldkxx_4w?authuser=0&entry=ttu&g_ep=EgoyMDI1MDExNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Location Icon">
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=100076219832598&mibextid=ZbWKwL" target="_blank" class="icon">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook Icon">
+          </a>
+        </div>
+        <div  class="reyt">
+        <h2 class="elementor-heading-title elementor-size-default">جميع الحقوق محفوظة لمعمل الايمان | © 2025</h2>
+    <h2 class="elementor-heading-title elementor-size-default">I PRO تطوير و تشغيل</h2>
+    </div>
+      </footer>
+      
+
+
+
+
+
+    <script src="zxc.js"></script>
+
+  <script>
+   
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navList = document.querySelector('nav ul');
+
+    menuToggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

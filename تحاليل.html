@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معمل الإيمان - حجز التحاليل الطبية</title>
+    <link rel="shortcut icon" type="image/x-icon" href="asd.png" />
+    <link rel="shortcut icon" type="image/png" href="asd.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #ef71aa;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #505050;
+            --success-color: #ef71aa;
+            --warning-color: #f39c12;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+       
+        
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+        }
+        
+        .hero {
+            background-color: #ef71aa;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 50px;
+            border: none;
+            font-size: 16px;
+            outline: none;
+        }
+        
+        .search-box button {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+        
+        .main-content {
+            padding: 40px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            margin: 15px auto 0;
+        }
+        
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .category-btn {
+            padding: 10px 20px;
+            background-color: white;
+            border: 1px solid #ffffff;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background-color: var(--secondary-color);
+            color: white;
+            border-color: var(--secondary-color);
+        }
+        
+        .tests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .test-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .test-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .test-card-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+        }
+        
+        .test-card-body {
+            padding: 20px;
+        }
+        
+        .test-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin: 10px 0;
+        }
+        
+        .test-details {
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .test-details span {
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .add-to-cart {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #fa4c9a;
+        }
+        
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: right 0.3s;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .cart-modal.open {
+            right: 0;
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .cart-items {
+            padding: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-info {
+            flex: 1;
+        }
+        
+        .cart-item-name {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+        
+        .remove-item {
+            background: none;
+            border: none;
+            color: var(--accent-color);
+            cursor: pointer;
+            font-size: 18px;
+            margin-left: 15px;
+        }
+        
+        .cart-summary {
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: var(--success-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+             
+        }
+
+
+       
+    
+        
+        .checkout-btn:hover {
+            background-color: #ef71aa;
+        }
+        
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+        
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+        
+        .empty-cart i {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: #ddd;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .tests-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-modal {
+                max-width: 100%;
+            }
+        }
+
+      .cart-icon {
+   position: absolute;  /* تخليها ثابتة */
+    top: 55px;         /* المسافة من أعلى الصفحة */
+    right: 20px;       /* أو left لو حابة تحطيها في الجهة اليسار */
+    font-size: 24px;   /* حجم الأيقونة */
+    color: #575757;       /* لون الأيقونة */
+    cursor: pointer;   /* شكل اليد عند المرور */
+    z-index: 999;    
+    padding: px;  /* تخليها فوق كل العناصر */
+    
+}
+
+
+
+#toast.warning {
+    background-color: var(--warning-color);
+}
+
+
+.add-to-cart.added {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+    </style>
+    <style>
+   
+    header {
+      background-color: #fff;
+      padding: 2rem 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: relative;
+       display: flex;
+      
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    
+     .menu-toggle {
+     
+              /* المسافة من أعلى الصفحة */
+    left: 20px; 
+     
+     
+     
+      border-radius: 5px;
+      font-size: 30px;
+      
+       
+    color: #000000;
+    background: none;
+    border: none;
+    cursor: pointer;
+  
+    
+      position: absolute;   /* تخليها ثابتة */
+         /* أو left لو حابة تحطيها في الجهة اليسار */
+    font-size: 30px;   /* حجم الأيقونة */
+    color: #000000;       /* لون الأيقونة */
+      /* شكل اليد عند المرور */
+       /* تخليها فوق كل العناصر */
+        display: none;
+         top: px;     
+    }
+
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #ef71aa;
+      font-weight: 700;
+      transition: 0.3s;
+       z-index: 999;
+    }
+
+    nav a:hover {
+      color: #fa4c9a;
+    }
+
+    
+ 
+    
+
+  
+
+  
+
+
+    
+
+    @media (max-width: 768px) {
+     
+
+      
+
+      .menu-toggle {
+        display: block;
+         z-index: 999;
+      }
+
+      nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: #fff;
+        padding: 34px;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+         z-index: 999;
+      }
+
+      nav ul.active {
+        display: flex;
+        padding: 34px;
+         z-index: 999;
+
+      }
+
+      .logo {
+        justify-content: center;
+        width: 100%;
+         z-index: 999;
+         font-size: 11px;
+         
+      }
+    
+   }
+
+      
+   .qwas{
+    font-size: 200px;
+
+   }
+
+
+    .logo {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      padding-right: 20px;
+    }
+
+    .logo img {
+      width: 80px;
+      margin-left: 10px;
+      font-size: 50px;
+      
+    }
+.azxcs{
+    color: #ef71aa;
+}
+
+
+  </style>
+</head>
+<body>
+
+
+<style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #fff;
+      font-family: sans-serif;
+    }
+
+    .splash {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      animation: fadeOut 2s ease forwards;
+    }
+
+    .splash img {
+      width: 150px;
+      opacity: 0;
+      animation: zoomLogo 1.5s ease forwards;
+    }
+
+    @keyframes zoomLogo {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; visibility: hidden; }
+    }
+
+    .content {
+      display: none;
+      padding: 40px;
+      text-align: center;
+    }
+
+
+   
+  a {
+    text-decoration: none;
+  }
+
+  .checkout-btn {
+    padding: 10px 20px;
+   
+   
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  
+  </style>
+
+
+  <!-- شاشة البداية باللوجو -->
+  <div class="splash" id="splash">
+    <img src="asd.png" alt="Logo">
+  </div>
+
+  <!-- محتوى الصفحة -->
+  
+
+  <script>
+    // بعد 2 ثانية من التحميل (مدة الأنيميشن)، أظهر المحتوى
+    setTimeout(() => {
+      document.getElementById('splash').style.display = 'none';
+      document.getElementById('content').style.display = 'block';
+    }, 2000);
+  </script>
+
+
+
+  
+
+  <header>
+    <div class="logo">
+        
+     <img src="asd.png" alt="Alfa Logo">
+      <h2 class="azxcs">معمل الايمان</h2>
+       <button class="menu-toggle">☰</button>
+    </div>
+    
+    <nav>
+      <ul>
+         <li><a href="index.html">الرئيسية</a></li>
+            <li><a href="عروض.html">عروض</a></li>
+<li><a href="تحاليل.html">حجز تحليل أون لاين</a></li>             
+            <li><a href="الفروع .html">الفروع</a></li>
+            <li><a href="وظائف.html">وظائف</a></li>
+            <li><a href="من نحن.html">من نحن</a></li>
+            <li><a href="اتصل بنا.html">اتصل بنا</a></li>
+                        <li ><a class="ddd"  href="https://el-eman-lab-results.xo.je/">استلم تحليلك الان</a></li>
+
+
+      </ul>
+    </nav>
+  </header>
+
+  
+      
+
+
+
+
+
+  
+
+  <script>
+   
+
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navList = document.querySelector('nav ul');
+
+    menuToggle.addEventListener('click', () => {
+      navList.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+    
+
+   
+
+
+    <div id="toast" style="position: fixed; top: 20px; right: 20px; background-color: var(--success-color); color: white; padding: 10px 20px; border-radius: 5px; display: none; z-index: 1001; font-weight: bold;">
+    تمت الإضافة إلى العربة
+</div>
+
+       <div class="cart-icon" id="cartIcon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
+    
+    <section class="hero">
+        <div class="container">
+           
+            <h1 class="vbn">حجز التحاليل الطبية أونلاين</h1>
+            <p class="vbn">احجز تحاليلك الطبية بسهولة وأمان من خلال موقع معمل الإيمان للتحاليل الطبية</p>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="ابحث عن التحليل الذي تريده...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </section>
+    
+    <section class="main-content">
+        <div class="container">
+            <h2 class="section-title">التحاليل المتاحة</h2>
+            
+            <div class="categories">
+                <button class="category-btn active" data-category="all">الكل</button>
+                <button class="category-btn" data-category="hematology">الدم</button>
+                <button class="category-btn" data-category="hormones">الهرمونات</button>
+                <button class="category-btn" data-category="immunology">المناعة</button>
+                <button class="category-btn" data-category="virology">الفيروسات</button>
+            </div>
+            
+            <div class="tests-grid" id="testsContainer">
+                <!-- Tests will be loaded here by JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <div class="overlay" id="overlay"></div>
+    
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>عربة التسوق</h3>
+            <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+        </div>
+        
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded here -->
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>عربة التسوق فارغة</p>
+            </div>
+        </div>
+        
+        <div class="cart-summary" id="cartSummary" style="display: none;">
+            <div class="cart-total">
+                <span>المجموع</span>
+                <span id="cartTotal">0 LE</span>
+
+               
+
+            </div>
+           
+<div style="margin-bottom: 15px;">
+    <input type="text" id="discountCodeInput" placeholder="أدخل كود الخصم" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+    <button onclick="applyDiscount()" style="margin-top: 10px; width: 100%; padding: 10px; background-color: #2c3e50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        تطبيق الكود
+    </button>
+    <div id="discountMessage" style="margin-top: 10px; font-weight: bold; color: green; display: none;"></div>
+</div>
+
+            <a   href="اتمام-الحجز.html"><button  class="checkout-btn">اتمام الحجز</button></a>
+            
+
+        </div>
+    </div>
+
+    
+
+
+    
+
+ 
+    
+    <script>
+        // Test data from the PDF - All tests included
+     const testsData = [
+            
+
+       
+  
+  { id: 1, name: "هيموجلوبين (Hb%) - Hemoglobin", category: "hematology", specimen: "EDTA", time: "1 يوم", price: 50, conditions: "" },
+  { id: 2, name: "تحليل صورة دم كاملة (CBC) - Complete Blood Count", category: "hematology", specimen: "EDTA", time: "1 يوم", price: 150, conditions: "" },
+  { id: 3, name: "معدل ترسيب كرات الدم الحمراء (ESR) - Erythrocyte Sedimentation Rate", category: "hematology", specimen: "ESR Tube", time: "1 يوم", price: 70, conditions: "" },
+  { id: 4, name: "الخلايا الشبكية (Retics) - Reticulocytes", category: "hematology", specimen: "EDTA", time: "1 يوم", price: 100, conditions: "" },
+  { id: 5, name: "فصيلة الدم (ABO) - Blood Group", category: "hematology", specimen: "EDTA", time: "1 يوم", price: 50, conditions: "" },
+  { id: 6, name: "عامل ريسس (RH) - Rhesus Factor", category: "hematology", specimen: "EDTA", time: "1 يوم", price: 50, conditions: "" },
+  { id: 7, name: "هيموجلوبين إلكتروفوريسيس (Hb Electrophoresis) - Hemoglobin Electrophoresis", category: "hematology", specimen: "EDTA", time: "3 أيام", price: 320, conditions: "" },
+  { id: 8, name: "نقص إنزيم G6PD (G6PD) - Glucose-6-Phosphate Dehydrogenase", category: "hematology", specimen: "EDTA", time: "1 يوم", price: 200, conditions: "أنيميا الفول - عدم نقل دم قبل 2 يوم" },
+  { id: 9, name: "فيريتين (S. Ferritin) - Ferritin", category: "iron profile", specimen: "Serum", time: "1 يوم", price: 200, conditions: "" },
+  { id: 10, name: "حديد (S. Iron) - Iron", category: "iron profile", specimen: "Serum", time: "1 يوم", price: 130, conditions: "" },
+  { id: 11, name: "القدرة الكلية على ارتباط الحديد (TIBC) - Total Iron Binding Capacity", category: "iron profile", specimen: "Serum", time: "1 يوم", price: 150, conditions: "" },
+  { id: 12, name: "القدرة غير المشبعة على ارتباط الحديد (UIBC) - Unsaturated Iron Binding Capacity", category: "iron profile", specimen: "Serum", time: "1 يوم", price: 50, conditions: "محسوب" },
+  { id: 13, name: "نسبة تشبع الترانسفيرين (Transferrin Saturation) - Transferrin Saturation", category: "iron profile", specimen: "Serum", time: "1 يوم", price: 50, conditions: "محسوب" },
+  { id: 14, name: "ترانسفيرين (Transferrin) - Transferrin", category: "iron profile", specimen: "Serum", time: "1 يوم", price: 250, conditions: "" },
+  { id: 15, name: "مستقبلات الترانسفيرين الذائبة (Soluble transferrin receptor) - Soluble Transferrin Receptor", category: "iron profile", specimen: "Serum", time: "6 أيام", price: 250, conditions: "" },
+  { id: 16, name: "ترانسفيرين في البراز (Transferrin in Stool) - Transferrin in Stool", category: "iron profile", specimen: "Stool", time: "1 يوم", price: 400, conditions: "التأكد من توفره من الفرع" },
+  { id: 17, name: "ترانسفيرين في البول (Transferrin in urine) - Transferrin in Urine", category: "iron profile", specimen: "Urine", time: "1 يوم", price: 200, conditions: "التأكد من توفره من الفرع" },
+  { id: 18, name: "سكر صائم (F.B.S) - Fasting Blood Sugar", category: "blood sugar", specimen: "Sod. florid", time: "1 يوم", price: 35, conditions: "صيام 8 إلى 10 ساعات" },
+  { id: 19, name: "سكر بعد الأكل بساعتين (PP.B.S) - Postprandial Blood Sugar", category: "blood sugar", specimen: "Sod. florid", time: "1 يوم", price: 35, conditions: "بعد الأكل بساعتين" },
+  { id: 20, name: "سكر عشوائي (R.B.S) - Random Blood Sugar", category: "blood sugar", specimen: "Sod. florid", time: "1 يوم", price: 35, conditions: "بدون صيام" },
+  { id: 21, name: "الهيموجلوبين السكري (HbA1C) - Glycated Hemoglobin", category: "blood sugar", specimen: "Blood EDTA", time: "1 يوم", price: 170, conditions: "بدون صيام" },
+  { id: 22, name: "مقاومة الأنسولين (HOMA-IR) - Homeostatic Model Assessment for Insulin Resistance", category: "blood sugar", specimen: "Serum + Sod. florid", time: "1 يوم", price: 250, conditions: "صيام 8 إلى 10 ساعات" },
+  { id: 23, name: "أنسولين صائم (Insulin Fasting) - Fasting Insulin", category: "blood sugar", specimen: "Frozen Serum", time: "1 يوم", price: 180, conditions: "صيام 8 إلى 10 ساعات" },
+  { id: 24, name: "أنسولين بعد الأكل (Insulin (P.P)) - Postprandial Insulin", category: "blood sugar", specimen: "Frozen Serum", time: "1 يوم", price: 180, conditions: "بعد الأكل بساعتين" },
+  { id: 25, name: "أنسولين عشوائي (Insulin (Random)) - Random Insulin", category: "blood sugar", specimen: "Frozen Serum", time: "1 يوم", price: 180, conditions: "بدون صيام" },
+  { id: 26, name: "سي بيبتيد صائم (C – Peptide (Fasting)) - C-Peptide Fasting", category: "blood sugar", specimen: "Frozen Serum", time: "1 يوم", price: 250, conditions: "صيام 8 إلى 10 ساعات" },
+  { id: 27, name: "سي بيبتيد بعد الأكل (C – Peptide (P.P)) - C-Peptide Postprandial", category: "blood sugar", specimen: "Frozen Serum", time: "1 يوم", price: 250, conditions: "بعد الأكل بساعتين" },
+  { id: 28, name: "إنزيم AST (S.GOT) - Aspartate Aminotransferase", category: "liver profile", specimen: "Serum", time: "1 يوم", price: 70, conditions: "" },
+  { id: 29, name: "إنزيم ALT (S.GPT) - Alanine Aminotransferase", category: "liver profile", specimen: "Serum", time: "1 يوم", price: 70, conditions: "" },
+  { id: 30, name: "بيليروبين كلي (Total Bilirubin) - Total Bilirubin", category: "liver profile", specimen: "Serum", time: "1 يوم", price: 100, conditions: "" },
+  { id: 31, name: "بيليروبين مباشر (Direct Bilirubin) - Direct Bilirubin", category: "liver profile", specimen: "Serum", time: "1 يوم", price: 100, conditions: "" },
+  { id: 32, name: "إنزيم الفوسفاتاز القلوي (Alk – Phosphatase) - Alkaline Phosphatase", category: "liver profile", specimen: "Serum", time: "1 يوم", price: 80, conditions: "" },
+  { id: 33, name: "ألبومين (Albumin) - Albumin", category: "liver profile", specimen: "Serum", time: "1 يوم", price: 80, conditions: "" },
+  { id: 34, name: "بروتين كلي (Total Protein) - Total Protein", category: "liver profile", specimen: "Serum", time: "1 يوم", price: 80, conditions: "" },
+  { id: 35, name: "إنزيم GGT (Gamma GT) - Gamma-Glutamyl Transferase", category: "liver profile", specimen: "Serum", time: "1 يوم", price: 80, conditions: "" },
+  { id: 36, name: "جلوبيولين (Globulin) - Globulin", category: "liver profile", specimen: "Serum", time: "1 يوم", price: 80, conditions: "" },
+  { id: 37, name: "يوريا (Urea - BUN) - Urea", category: "kidney function", specimen: "Serum", time: "1 يوم", price: 70, conditions: "" },
+  { id: 38, name: "كرياتينين (Creat) - Creatinine", category: "kidney function", specimen: "Serum", time: "1 يوم", price: 70, conditions: "" },
+  { id: 39, name: "معدل الترشيح الكبيبي (e-GFR) - Estimated Glomerular Filtration Rate", category: "kidney function", specimen: "Serum", time: "1 يوم", price: 70, conditions: "محسوب من الكرياتينين" },
+  { id: 40, name: "حمض اليوريك (Uric Acid (U.A)) - Uric Acid", category: "kidney function", specimen: "Serum", time: "1 يوم", price: 70, conditions: "" },
+  { id: 41, name: "نسبة الكالسيوم إلى الكرياتينين في البول (Calcium/Creatinine Ratio) - Calcium/Creatinine Ratio", category: "kidney function", specimen: "Urine Sample After 2 h Fasting", time: "1 يوم", price: 200, conditions: "" },
+  { id: 42, name: "نسبة البروتين إلى الكرياتينين في البول (Protein / Creatinine Ratio) - Protein/Creatinine Ratio", category: "kidney function", specimen: "1 ml Morning Urine", time: "1 يوم", price: 200, conditions: "ثاني عينة بول صباحية" },
+  { id: 43, name: "نسبة الألبومين إلى الكرياتينين في البول (Albumin / Creatinine Ratio) - Albumin/Creatinine Ratio", category: "kidney function", specimen: "Random Urine Sample", time: "1 يوم", price: 200, conditions: "" },
+  { id: 44, name: "نسبة حمض اليوريك إلى الكرياتينين في البول (Uric Acid /Creatinine Ratio) - Uric Acid/Creatinine Ratio", category: "kidney function", specimen: "1 ml Morning Urine", time: "1 يوم", price: 200, conditions: "" },
+  { id: 45, name: "مايكرو ألبومين في البول (Micro – albumin in urine) - Microalbumin in Urine", category: "kidney function", specimen: "Random Urine Sample", time: "1 يوم", price: 200, conditions: "ثاني عينة بول صباحية" },
+  { id: 46, name: "تصفية الكرياتينين (Creratinine Clearance) - Creatinine Clearance", category: "kidney function", specimen: "Serum + 24 h Urine Collected", time: "1 يوم", price: 200, conditions: "مطلوب الوزن" },
+  { id: 47, name: "بروتين في البول (Protein in Urine) - Protein in Urine", category: "kidney function", specimen: "24 h urine collection Or Random Sample", time: "1 يوم", price: 100, conditions: "" },
+  { id: 48, name: "بروتين كلي (Total Protein) - Total Protein", category: "kidney function", specimen: "Serum", time: "1 يوم", price: 70, conditions: "" },
+  { id: 49, name: "ملف الدهون (Lipid Profile) - Lipid Profile", category: "lipid profile", specimen: "Blood EDTA", time: "1 يوم", price: 280, conditions: "صيام 10 إلى 12 ساعة" },
+  { id: 50, name: "كوليسترول (Cholesterol) - Cholesterol", category: "lipid profile", specimen: "Serum", time: "1 يوم", price: 70, conditions: "لا يحتاج صيام" },
+  { id: 51, name: "دهون ثلاثية (Tri Glesrides) - Triglycerides", category: "lipid profile", specimen: "Serum", time: "1 يوم", price: 70, conditions: "صيام 10 إلى 12 ساعة" },
+  { id: 52, name: "كوليسترول HDL (HDL) - High-Density Lipoprotein", category: "lipid profile", specimen: "Serum", time: "1 يوم", price: 70, conditions: "صيام 10 إلى 12 ساعة" },
+  { id: 53, name: "كوليسترول LDL (LDL) - Low-Density Lipoprotein", category: "lipid profile", specimen: "Serum", time: "1 يوم", price: 70, conditions: "صيام 10 إلى 12 ساعة" },
+  { id: 54, name: "تحليل بول (Urine Analysis) - Urine Analysis", category: "parasitology", specimen: "Urine sample", time: "1 يوم", price: 45, conditions: "" },
+  { id: 55, name: "تحليل براز (Stool Analysis) - Stool Analysis", category: "parasitology", specimen: "Stool Sample", time: "1 يوم", price: 45, conditions: "" },
+  { id: 56, name: "مزرعة بول (Urine Culture) - Urine Culture", category: "culture & sensitivity", specimen: "Urine", time: "3-4 أيام", price: 250, conditions: "الامتناع عن المضاد الحيوي 3 أيام" },
+  { id: 57, name: "مزرعة براز (Stool Culture) - Stool Culture", category: "culture & sensitivity", specimen: "Stool", time: "3-4 أيام", price: 250, conditions: "الامتناع عن المضاد الحيوي 3 أيام" },
+  { id: 58, name: "مزرعة مسحة مهبلية (Vaginal Swab C/S) - Vaginal Swab Culture", category: "culture & sensitivity", specimen: "", time: "3-4 أيام", price: 250, conditions: "الامتناع عن المضاد الحيوي 3 أيام" },
+  { id: 59, name: "مزرعة فطريات (Fungus Culture) - Fungus Culture", category: "culture & sensitivity", specimen: "", time: "3-4 أيام", price: 250, conditions: "الامتناع عن المضاد الحيوي 3 أيام" },
+  { id: 60, name: "مزرعة مسحة حلق (Throat Swab C/S) - Throat Swab Culture", category: "culture & sensitivity", specimen: "", time: "3-4 أيام", price: 250, conditions: "الامتناع عن المضاد الحيوي 3 أيام" },
+  { id: 61, name: "مزرعة دم (Blood Culture) - Blood Culture", category: "culture & sensitivity", specimen: "", time: "10 أيام", price: 400, conditions: "توضع عينة الدم مباشرة 10 cm في الزجاجة الخاصة بمزرعة الدم" },
+  { id: 62, name: "مزرعة فطريات (Fungus Culture) - Fungus Culture", category: "culture & sensitivity", specimen: "عينه من الظافر او اي عينه يحددها الدكتور", time: "21 يوم", price: 250, conditions: "" },
+  { id: 63, name: "فحص KOH (KOH Examination) - Potassium Hydroxide Test", category: "parasitology", specimen: "عينه من الظافر او اي عينه يحددها الدكتور", time: "2 يوم", price: 170, conditions: "" },
+  { id: 64, name: "كالسيوم كلي (Ca-Total) - Total Calcium", category: "electrolytes", specimen: "Serum", time: "1 يوم", price: 70, conditions: "" },
+  { id: 65, name: "كالسيوم متأين (Ca-Ionized (Ca++)) - Ionized Calcium", category: "electrolytes", specimen: "Serum", time: "1 يوم", price: 80, conditions: "" },
+  { id: 66, name: "ماغنيسيوم (Magnesium (Mg)) - Magnesium", category: "electrolytes", specimen: "Serum", time: "1 يوم", price: 100, conditions: "" },
+  { id: 67, name: "صوديوم (Sodium (Na)) - Sodium", category: "electrolytes", specimen: "Serum", time: "1 يوم", price: 100, conditions: "" },
+  { id: 68, name: "بوتاسيوم (Potassium (K)) - Potassium", category: "electrolytes", specimen: "Serum", time: "1 يوم", price: 100, conditions: "" },
+  { id: 69, name: "حديد (S.Iron (Fe)) - Iron", category: "electrolytes", specimen: "Serum", time: "1 يوم", price: 130, conditions: "" },
+  { id: 70, name: "فوسفور (Phosphorus (P)) - Phosphorus", category: "electrolytes", specimen: "Serum", time: "1 يوم", price: 100, conditions: "" },
+  { id: 71, name: "نحاس (Copper (Cu)) - Copper", category: "electrolytes", specimen: "Serum", time: "1 يوم", price: 200, conditions: "" },
+  { id: 72, name: "زنك (Zink (Zn)) - Zinc", category: "electrolytes", specimen: "Serum", time: "1 يوم", price: 220, conditions: "" },
+  { id: 73, name: "هرمون T3 (T3) - Triiodothyronine", category: "hormones", specimen: "Serum", time: "1 يوم", price: 150, conditions: "" },
+  { id: 74, name: "هرمون T4 (T4) - Thyroxine", category: "hormones", specimen: "Serum", time: "1 يوم", price: 150, conditions: "" },
+  { id: 75, name: "هرمون T3 الحر (F. T3) - Free Triiodothyronine", category: "hormones", specimen: "Serum", time: "1 يوم", price: 150, conditions: "" },
+  { id: 76, name: "هرمون T4 الحر (F .T4) - Free Thyroxine", category: "hormones", specimen: "Serum", time: "1 يوم", price: 150, conditions: "" },
+  { id: 77, name: "هرمون TSH (TSH) - Thyroid Stimulating Hormone", category: "hormones", specimen: "Serum", time: "1 يوم", price: 150, conditions: "" },
+  { id: 78, name: "أجسام مضادة للغدة الدرقية (Thyroid Ab) - Thyroid Antibodies", category: "hormones", specimen: "Serum", time: "1 يوم", price: 250, conditions: "" },
+  { id: 79, name: "أجسام مضادة للميكروسومات (Anti-Microsomal Ab (TPO)) - Anti-Thyroid Peroxidase Antibodies", category: "hormones", specimen: "Serum", time: "1 يوم", price: 250, conditions: "" },
+  { id: 80, name: "أجسام مضادة للغدة الدرقية (Anti Thyroid Ab) - Anti-Thyroid Antibodies", category: "hormones", specimen: "Serum", time: "1 يوم", price: 270, conditions: "" },
+  { id: 81, name: "أجسام مضادة للثايروجلوبيولين (Anti-Thyroglobulin Ab. (ATG)) - Anti-Thyroglobulin Antibodies", category: "hormones", specimen: "Serum", time: "1 يوم", price: 270, conditions: "" },
+  { id: 82, name: "ثايروجلوبيولين (Thyroglobulin) - Thyroglobulin", category: "hormones", specimen: "Serum", time: "1 يوم", price: 500, conditions: "" },
+  { id: 83, name: "اختبار حمل (Pregnancy Test) - Pregnancy Test", category: "hormones", specimen: "Serum", time: "1 يوم", price: 60, conditions: "" },
+  { id: 84, name: "هرمون الحمل النوعي (B-HCG (Qualitative)) - Qualitative Beta hCG", category: "hormones", specimen: "Serum", time: "1 يوم", price: 60, conditions: "" },
+  { id: 85, name: "هرمون الحمل الكمي (B- HCG (Quantitative)) - Quantitative Beta hCG", category: "hormones", specimen: "Serum", time: "1 يوم", price: 170, conditions: "" },
+  { id: 86, name: "هرمون FSH (FSH) - Follicle Stimulating Hormone", category: "hormones", specimen: "Serum", time: "1 يوم", price: 220, conditions: "" },
+  { id: 87, name: "هرمون LH (LH) - Luteinizing Hormone", category: "hormones", specimen: "Serum", time: "1 يوم", price: 170, conditions: "" },
+  { id: 88, name: "هرمون الحليب (Prolactin (PRL)) - Prolactin", category: "hormones", specimen: "Serum", time: "1 يوم", price: 170, conditions: "" },
+  { id: 89, name: "هرمون AMH (AMH (Anti-Mullerian Hormone)) - Anti-Mullerian Hormone", category: "hormones", specimen: "Serum", time: "1 يوم", price: 550, conditions: "" },
+  { id: 90, name: "هرمون DHEA (DHEA) - Dehydroepiandrosterone", category: "hormones", specimen: "Serum", time: "1 يوم", price: 250, conditions: "" },
+  { id: 91, name: "هرمون DHEA-S (DHEA S) - Dehydroepiandrosterone Sulfate", category: "hormones", specimen: "Serum", time: "1 يوم", price: 250, conditions: "" },
+  { id: 92, name: "هرمون البروجسترون (Progesterone) - Progesterone", category: "hormones", specimen: "Serum", time: "1 يوم", price: 150, conditions: "" },
+  { id: 93, name: "هرمون التستوستيرون الكلي (Testosterone Total) - Total Testosterone", category: "hormones", specimen: "Serum", time: "1 يوم", price: 150, conditions: "" },
+  { id: 94, name: "هرمون التستوستيرون الحر (Testosterone Free) - Free Testosterone", category: "hormones", specimen: "Serum", time: "1 يوم", price: 200, conditions: "" },
+  { id: 95, name: "هرمون الاستراديول (Estradiol (E2)) - Estradiol", category: "hormones", specimen: "Serum", time: "1 يوم", price: 150, conditions: "" },
+  { id: 96, name: "هرمون الاستريول (Estriol (E3)) - Estriol", category: "hormones", specimen: "Serum", time: "1 يوم", price: 500, conditions: "" },
+  { id: 97, name: "هرمون الغدة الجار درقية (Para thyroid Hormone (PTH)) - Parathyroid Hormone", category: "hormones", specimen: "Serum", time: "1 يوم", price: 250, conditions: "" },
+  { id: 98, name: "كورتيزول صباحي (Cortisol (AM)) - Morning Cortisol", category: "hormones", specimen: "Serum", time: "1 يوم", price: 250, conditions: "تسحب العينة الساعة 8 إلى 9 صباحا" },
+  { id: 99, name: "كورتيزول مسائي (Cortisol (Pm)) - Evening Cortisol", category: "hormones", specimen: "Serum", time: "1 يوم", price: 250, conditions: "تسحب العينة بين 8 إلى 9 مساءا" },
+  { id: 100, name: "كورتيزول عشوائي (Cortisol Random) - Random Cortisol", category: "hormones", specimen: "Serum", time: "1 يوم", price: 250, conditions: "عينة عشوائية" },
+  { id: 101, name: "هرمون ACTH صباحي (ACTH (AM)) - Morning Adrenocorticotropic Hormone", category: "hormones", specimen: "EDTA", time: "1 يوم", price: 250, conditions: "تسحب العينة الساعة 8 إلى 9 صباحا" },
+  { id: 102, name: "هرمون ACTH مسائي (ACTH (PM)) - Evening Adrenocorticotropic Hormone", category: "hormones", specimen: "EDTA", time: "1 يوم", price: 250, conditions: "تسحب العينة بين 8 إلى 9 مساءا" },
+  { id: 103, name: "هرمون النمو الأساسي (GH - Basal (Growth hormone Basal)) - Growth Hormone Basal", category: "hormones", specimen: "Serum", time: "1 يوم", price: 250, conditions: "تسحب العينة الساعة 8 صباحا - صيام 10 إلى 12 ساعة" },
+  { id: 104, name: "هرمون النمو بعد التحفيز بالتمارين (GH (Growth hormone After Stimulation by Exercise)) - Growth Hormone Post-Exercise", category: "hormones", specimen: "Serum", time: "1 يوم", price: 250, conditions: "تسحب العينة بعد التمارين" },
+  { id: 105, name: "بكتيريا H. pylori في البراز (H- Pylori Ag in Stool) - Helicobacter pylori Antigen in Stool", category: "serology", specimen: "Stool", time: "1 يوم", price: 170, conditions: "" },
+  { id: 106, name: "بكتيريا H. pylori في البراز (H-Pylori Ag Stool (Titer)) - Helicobacter pylori Antigen Titer in Stool", category: "serology", specimen: "Stool", time: "1 يوم", price: 220, conditions: "" },
+  { id: 107, name: "أجسام مضادة لـ H. pylori في الدم (H- Pylori Ab in Blood) - Helicobacter pylori Antibodies in Blood", category: "serology", specimen: "Serum", time: "1 يوم", price: 170, conditions: "" },
+  { id: 108, name: "كالبروتكتين (Calprotectin) - Calprotectin", category: "serology", specimen: "Stool", time: "3 أيام", price: 550, conditions: "" },
+  { id: 109, name: "اختبار وايدال (Widal Test) - Widal Test", category: "serology", specimen: "Serum", time: "1 يوم", price: 150, conditions: "" },
+  { id: 110, name: "اختبار البروسيلا (Brucella (Latex-Titer)) - Brucella Latex Agglutination Test", category: "serology", specimen: "Serum", time: "1 يوم", price: 150, conditions: "" },
+  { id: 111, name: "أجسام مضادة للبروسيلا IgG (Brucella (IgG)) - Brucella IgG Antibodies", category: "serology", specimen: "Serum", time: "7 أيام", price: 400, conditions: "" },
+  { id: 112, name: "أجسام مضادة للبروسيلا IgM (Brucella IgM) - Brucella IgM Antibodies", category: "serology", specimen: "Serum", time: "7 أيام", price: 400, conditions: "" },
+  { id: 113, name: "اختبار روز والر (Rose Waller) - Rose-Waller Test", category: "serology", specimen: "Serum", time: "1 يوم", price: 150, conditions: "" },
+  { id: 114, name: "فحص TORCH شامل (TORCH Screen) - TORCH Screen", category: "serology", specimen: "Serum", time: "1 يوم", price: 1400, conditions: "" },
+  { id: 115, name: "فحص TORCH (IgG + IgM) - TORCH IgG and IgM", category: "serology", specimen: "Serum", time: "1 يوم", price: 1400, conditions: "" },
+  { id: 116, name: "فحص TORCH (IgG) - TORCH IgG", category: "serology", specimen: "Serum", time: "1 يوم", price: 700, conditions: "" },
+  { id: 117, name: "فحص TORCH (IgM) - TORCH IgM", category: "serology", specimen: "Serum", time: "1 يوم", price: 700, conditions: "" },
+  { id: 118, name: "أجسام مضادة للتوكسوبلازما IgM (Toxoplasmosis Ab IgM) - Toxoplasmosis IgM Antibodies", category: "serology", specimen: "Serum", time: "1 يوم", price: 175, conditions: "" },
+  { id: 119, name: "أجسام مضادة للتوكسوبلازما IgG (Toxoplasmosis Ab IgG) - Toxoplasmosis IgG Antibodies", category: "serology", specimen: "Serum", time: "1 يوم", price: 175, conditions: "" },
+  { id: 120, name: "أجسام مضادة للحصبة الألمانية IgM (Rubella Ab IgM) - Rubella IgM Antibodies", category: "serology", specimen: "Serum", time: "1 يوم", price: 175, conditions: "" },
+  { id: 121, name: "أجسام مضادة للحصبة الألمانية IgG (Rubella Ab IgG) - Rubella IgG Antibodies", category: "serology", specimen: "Serum", time: "1 يوم", price: 175, conditions: "" },
+  { id: 122, name: "أجسام مضادة للفيروس المضخم للخلايا IgM (Cytomegalovirus Ab IgM (CMV – IgM)) - Cytomegalovirus IgM Antibodies", category: "serology", specimen: "Serum", time: "1 يوم", price: 175, conditions: "" },
+  { id: 123, name: "أجسام مضادة للفيروس المضخم للخلايا IgG (Cytomegalovirus Ab IgG (CMV – IgG)) - Cytomegalovirus IgG Antibodies", category: "serology", specimen: "Serum", time: "1 يوم", price: 175, conditions: "" },
+  { id: 124, name: "أجسام مضادة لفيروس الهربس النوع الأول IgM (Herpes Virus Ab (I) IgM HSV I (IgM)) - Herpes Simplex Virus Type 1 IgM Antibodies", category: "serology", specimen: "Serum", time: "1 يوم", price: 175, conditions: "" },
+  { id: 125, name: "أجسام مضادة لفيروس الهربس النوع الأول IgG (Herpes Virus Ab (I) IgG HSV I (IgG)) - Herpes Simplex Virus Type 1 IgG Antibodies", category: "serology", specimen: "Serum", time: "1 يوم", price: 175, conditions: "" },
+  { id: 126, name: "أجسام مضادة لفيروس الهربس النوع الثاني IgM (Herpes Virus Ab (II) IgM HSV II (IgM)) - Herpes Simplex Virus Type 2 IgM Antibodies", category: "serology", specimen: "Serum", time: "1 يوم", price: 175, conditions: "" },
+  { id: 127, name: "أجسام مضادة لفيروس الهربس النوع الثاني IgG (Herpes Virus Ab (II) IgG HSV I (IgM)) - Herpes Simplex Virus Type 2 IgG Antibodies", category: "serology", specimen: "Serum", time: "1 يوم", price: 175, conditions: "" },
+  { id: 128, name: "إنزيم CPK كلي (CPK Total) - Creatine Phosphokinase Total", category: "cardiac", specimen: "Serum", time: "1 يوم", price: 100, conditions: "" },
+  { id: 129, name: "إنزيم CK-MB (CK – MB) - Creatine Kinase MB", category: "cardiac", specimen: "Serum", time: "1 يوم", price: 150, conditions: "" },
+  { id: 130, name: "إنزيم LDH (LDH) - Lactate Dehydrogenase", category: "cardiac", specimen: "Serum", time: "1 يوم", price: 100, conditions: "" },
+  { id: 131, name: "تروبونين T كمي (Troponin – T(Quantitative)) - Troponin T Quantitative", category: "cardiac", specimen: "Serum", time: "6 أيام", price: 450, conditions: "" },
+  { id: 132, name: "تروبونين I نوعي (Troponin – I (Qualitative)) - Troponin I Qualitative", category: "cardiac", specimen: "Serum", time: "1 يوم", price: 200, conditions: "" },
+  { id: 133, name: "زمن البروثرومبين (PT - INR) - Prothrombin Time", category: "coagulation", specimen: "Citrated Plasma", time: "1 يوم", price: 100, conditions: "" },
+  { id: 134, name: "زمن الثرومبوبلاستين الجزئي (PTT) - Partial Thromboplastin Time", category: "coagulation", specimen: "Citrated Plasma", time: "1 يوم", price: 100, conditions: "" },
+  { id: 135, name: "زمن النزيف (Bleeding Time (B.T)) - Bleeding Time", category: "coagulation", specimen: "One drop Blood on slide", time: "1 يوم", price: 60, conditions: "" },
+  { id: 136, name: "زمن التجلط (Clotting Time (C.T)) - Clotting Time", category: "coagulation", specimen: "One drop Blood on slide", time: "1 يوم", price: 60, conditions: "" },
+  { id: 137, name: "داي دايمر (D-Dimer) - D-Dimer", category: "coagulation", specimen: "Citrated Plasma", time: "1 يوم", price: 250, conditions: "" },
+  { id: 138, name: "فيتامين D3 (Vit D3) - Vitamin D3", category: "vitamins", specimen: "Serum", time: "1 يوم", price: 450, conditions: "" },
+  { id: 139, name: "فيتامين D (Vit D) - Vitamin D", category: "vitamins", specimen: "Serum", time: "1 يوم", price: 500, conditions: "" },
+  { id: 140, name: "فيتامين B12 (Vit B 12) - Vitamin B12", category: "vitamins", specimen: "Serum", time: "1 يوم", price: 450, conditions: "" },
+  { id: 141, name: "مستضد البروستاتا النوعي الكلي (PSA Total) - Prostate-Specific Antigen Total", category: "tumor marker", specimen: "Serum", time: "1 يوم", price: 250, conditions: "" },
+  { id: 142, name: "مستضد البروستاتا النوعي الحر (Free PSA) - Free Prostate-Specific Antigen", category: "tumor marker", specimen: "Serum", time: "1 يوم", price: 250, conditions: "" },
+  { id: 143, name: "ألفا فيتو بروتين (Alpha Feto Protein (AFP)) - Alpha-Fetoprotein", category: "tumor marker", specimen: "Serum", time: "1 يوم", price: 250, conditions: "" },
+  { id: 144, name: "مستضد سرطاني مضغي (CEA) - Carcinoembryonic Antigen", category: "tumor marker", specimen: "Serum", time: "1 يوم", price: 250, conditions: "" },
+  { id: 145, name: "مستضد CA 15.3 (CA 15.3) - Cancer Antigen 15-3", category: "tumor marker", specimen: "Serum", time: "1 يوم", price: 250, conditions: "" },
+  { id: 146, name: "مستضد CA 19.9 (CA 19.9) - Cancer Antigen 19-9", category: "tumor marker", specimen: "Serum", time: "1 يوم", price: 250, conditions: "" },
+  { id: 147, name: "مستضد CA 125 (CA 125) - Cancer Antigen 125", category: "tumor marker", specimen: "Serum", time: "1 يوم", price: 250, conditions: "" },
+  { id: 148, name: "مستضد CA 72.4 (CA 72.4) - Cancer Antigen 72-4", category: "tumor marker", specimen: "Serum", time: "8 أيام", price: 900, conditions: "" },
+  { id: 149, name: "مستضد CA 242 (CA 242) - Cancer Antigen 242", category: "tumor marker", specimen: "Serum", time: "8 أيام", price: 700, conditions: "" },
+  { id: 150, name: "مستضد CA 50 (CA 50) - Cancer Antigen 50", category: "tumor marker", specimen: "Serum", time: "8 أيام", price: 1200, conditions: "" },
+  { id: 151, name: "أجسام مضادة لفيروس سي (HCV Ab) - Hepatitis C Virus Antibodies", category: "virology", specimen: "Serum", time: "1 يوم", price: 150, conditions: "" },
+  { id: 152, name: "مستضد سطحى لفيروس بي (HBs Ag) - Hepatitis B Surface Antigen", category: "virology", specimen: "Serum", time: "1 يوم", price: 150, conditions: "" },
+  { id: 153, name: "أجسام مضادة لفيروس بي (HBs Ab) - Hepatitis B Surface Antibodies", category: "virology", specimen: "Serum", time: "1 يوم", price: 200, conditions: "" },
+  { id: 154, name: "أجسام مضادة لفيروس نقص المناعة البشرية (HIV Ab) - Human Immunodeficiency Virus Antibodies", category: "virology", specimen: "Serum", time: "1 يوم", price: 150, conditions: "" },
+  { id: 155, name: "أجسام مضادة لفيروس أ IgG (HAV – Ab (IgG)) - Hepatitis A Virus IgG Antibodies", category: "virology", specimen: "serum", time: "1 يوم", price: 200, conditions: "" },
+  { id: 156, name: "أجسام مضادة لفيروس أ IgM (HAV – IgM) - Hepatitis A Virus IgM Antibodies", category: "virology", specimen: "serum", time: "1 يوم", price: 200, conditions: "" },
+  { id: 157, name: "PCR لفيروس سي كمي (HCV PCR Quantitative) - Hepatitis C Virus PCR Quantitative", category: "virology", specimen: "EDTA Plasma", time: "2 يوم", price: 450, conditions: "" },
+  { id: 158, name: "أجسام مضادة لفيروس سي IgM (HCV IgM) - Hepatitis C Virus IgM Antibodies", category: "virology", specimen: "Serum", time: "5-6 أيام", price: 450, conditions: "" },
+  { id: 159, name: "تحديد نوع فيروس سي (HCV Genotyping) - Hepatitis C Virus Genotyping", category: "virology", specimen: "serum", time: "7-8 أيام", price: 1600, conditions: "" },
+  { id: 160, name: "PCR لفيروس بي كمي (HBV PCR Quantitative) - Hepatitis B Virus PCR Quantitative", category: "virology", specimen: "EDTA Plasma", time: "2 يوم", price: 500, conditions: "" },
+  { id: 161, name: "تحديد نوع فيروس بي (HBV Genotyping) - Hepatitis B Virus Genotyping", category: "virology", specimen: "EDTA Plasma", time: "7-8 أيام", price: 1400, conditions: "" },
+  { id: 162, name: "PCR لفيروس نقص المناعة البشرية كمي (HIV-RNA by PCR (Quantative)) - Human Immunodeficiency Virus RNA PCR Quantitative", category: "virology", specimen: "EDTA Plasma", time: "7 أيام", price: 900, conditions: "" },
+  { id: 163, name: "PCR لفيروس نقص المناعة البشرية نوعي (HIV PCR Qualitative) - Human Immunodeficiency Virus PCR Qualitative", category: "virology", specimen: "EDTA Plasma", time: "7 أيام", price: 1200, conditions: "" },
+  { id: 164, name: "مستضد فيروس الروتا (Rotavirus Antigen) - Rotavirus Antigen", category: "virology", specimen: "Stool Sample", time: "1 يوم", price: 300, conditions: "" },
+  { id: 165, name: "بروتين سي التفاعلي (CRP) - C-Reactive Protein", category: "immunology", specimen: "Serum", time: "1 يوم", price: 100, conditions: "" },
+  { id: 166, name: "مضادات الستربتوليزين O (ASO-T) - Anti-Streptolysin O Titer", category: "immunology", specimen: "Serum", time: "1 يوم", price: 100, conditions: "" },
+  { id: 167, name: "عامل الروماتويد (Rheumatoid Factor (RF)) - Rheumatoid Factor", category: "immunology", specimen: "Serum", time: "1 يوم", price: 100, conditions: "" },
+  { id: 168, name: "أجسام مضادة للببتيد السيتروليني الحلقي (Anti CCP) - Anti-Cyclic Citrullinated Peptide", category: "immunology", specimen: "Serum", time: "1 يوم", price: 400, conditions: "" },
+  { id: 169, name: "أجسام مضادة للنواة (ANA – Elisa) - Anti-Nuclear Antibodies ELISA", category: "immunology", specimen: "Serum", time: "1 يوم", price: 270, conditions: "" },
+  { id: 170, name: "أجسام مضادة للنواة (Anti -Nuclear Abs - Elisa) - Anti-Nuclear Antibodies ELISA", category: "immunology", specimen: "Serum", time: "3-4 أيام", price: 420, conditions: "" },
+  { id: 171, name: "أجسام مضادة للنواة (ANA – ( IF )) - Anti-Nuclear Antibodies Immunofluorescence", category: "immunology", specimen: "Serum", time: "3-4 أيام", price: 650, conditions: "" },
+  { id: 172, name: "أجسام مضادة للنواة (ANA – ( IF ) titre) - Anti-Nuclear Antibodies Immunofluorescence Titer", category: "immunology", specimen: "Serum", time: "1 يوم", price: 270, conditions: "" },
+  { id: 173, name: "أجسام مضادة للـ DNA (DNA (Anti-DNA (d.s) (ELISA)) - Anti-dsDNA Antibodies ELISA", category: "immunology", specimen: "Serum", time: "3 أيام", price: 420, conditions: "" },
+  { id: 174, name: "أجسام مضادة للـ DNA (DNA (Anti-DNA (d.s) (IF)) - Anti-dsDNA Antibodies Immunofluorescence", category: "immunology", specimen: "Serum", time: "5-6 أيام", price: 500, conditions: "" },
+  { id: 175, name: "أجسام مضادة للـ DNA (DNA (Anti-DNA (d.s) (IF) Titre) - Anti-dsDNA Antibodies Immunofluorescence Titer", category: "immunology", specimen: "Serum", time: "3 أيام", price: 450, conditions: "" },
+  { id: 176, name: "أجسام مضادة لـ SS-B/La (Anti-ss-B/La) - Anti-SS-B/La Antibodies", category: "immunology", specimen: "Serum", time: "3 أيام", price: 450, conditions: "" },
+  { id: 177, name: "أجسام مضادة لـ SS-A/Ro (Anti-ss-A/Ro) - Anti-SS-A/Ro Antibodies", category: "immunology", specimen: "Serum", time: "3 أيام", price: 450, conditions: "" },
+  { id: 178, name: "أجسام مضادة للميتوكوندريا (AMA (Anti Mitochondrial Abs)) - Anti-Mitochondrial Antibodies", category: "immunology", specimen: "Serum", time: "3 أيام", price: 550, conditions: "" },
+  { id: 179, name: "أجسام مضادة للعضلات الملساء (ASMA (Anti-Smooth Muscle Antibody)) - Anti-Smooth Muscle Antibodies", category: "immunology", specimen: "Serum", time: "3-4 أيام", price: 350, conditions: "" },
+  { id: 180, name: "جلوبيولين مناعي E (IgE (Total)) - Total Immunoglobulin E", category: "immunology", specimen: "Serum", time: "1 يوم", price: 200, conditions: "" },
+  { id: 181, name: "تحليل متابعة الأدوية (Drug Monitoring) - Drug Monitoring", category: "others", specimen: "Random Urine Sample", time: "1 يوم", price: 350, conditions: "" },
+  { id: 182, name: "كحول في الدم (Alcohol in Blood) - Alcohol in Blood", category: "others", specimen: "Serum", time: "5-6 أيام", price: 450, conditions: "" },
+  { id: 183, name: "كحول في البول (Alcohol in urine) - Alcohol in Urine", category: "others", specimen: "Serum", time: "5-6 أيام", price: 450, conditions: "" },
+  { id: 184, name: "كحول كمي (Alcohol (Quantitative)) - Alcohol Quantitative", category: "others", specimen: "Serum or Random Urine Sample", time: "5-6 أيام", price: 450, conditions: "" },
+  { id: 185, name: "أميلاز في الدم (Amylase in Serum) - Amylase in Serum", category: "others", specimen: "Serum", time: "1 يوم", price: 150, conditions: "" },
+  { id: 186, name: "أميلاز في البول (Amylase in urine) - Amylase in Urine", category: "others", specimen: "urine", time: "5-6 أيام", price: 150, conditions: "" },
+  { id: 187, name: "ليباز (Lipase) - Lipase", category: "others", specimen: "Serum", time: "1 يوم", price: 150, conditions: "" },
+  { id: 188, name: "دم خفي في البراز (Occult Blood in Stool) - Occult Blood in Stool", category: "others", specimen: "Stool", time: "1 يوم", price: 170, conditions: "الامتناع عن أدوية الحديد والبقوليات 3-4 أيام" },
+  { id: 189, name: "مضاد التخثر الذئبي (Lupus Anticoagulant) - Lupus Anticoagulant", category: "others", specimen: "Citrated Plasma", time: "1 يوم", price: 250, conditions: "" },
+  { id: 190, name: "فيبرينوجين (Fibrinogen) - Fibrinogen", category: "others", specimen: "Citrated Plasma", time: "1 يوم", price: 160, conditions: "" },
+  { id: 191, name: "منتجات تحلل الفيبرين (Fibrinogen degradation products (FDP)) - Fibrin Degradation Products", category: "others", specimen: "Citrated Plasma", time: "1 يوم", price: 250, conditions: "" },
+  { id: 192, name: "حساسية الطعام (Food Print) - Food Allergy Panel", category: "others", specimen: "", time: "", price: 2000, conditions: "بعد الخصم 1600 LE" },
+  { id: 193, name: "حساسية الاستنشاق (IgE Specific (Inhalant allergens) RAST) - Inhalant Allergy Panel", category: "others", specimen: "", time: "", price: 2000, conditions: "بعد الخصم 1600 LE" },
+  { id: 194, name: "فحص جين الحمى المتوسطية العائلية (FMF (PCR for Familial Mediterranean Fever Gene Mutation)) - Familial Mediterranean Fever Gene Mutation", category: "others", specimen: "EDTA", time: "7-8 أيام", price: 1600, conditions: "" },
+  { id: 195, name: "أجسام مضادة للكبد والكلى (LKM-Ab (Liver kidney microsomal ab)) - Liver Kidney Microsomal Antibodies", category: "others", specimen: "", time: "", price: 550, conditions: "" },
+  { id: 196, name: "أجسام مضادة للمستضدات النووية المستخلصة (ENA (Extractable nuclear Antigens autoantibodies)) - Extractable Nuclear Antigens Antibodies", category: "others", specimen: "", time: "", price: 850, conditions: "" },
+  { id: 197, name: "اختبار كوانتيفيرون للسل (TB Gold (QuantiFERON)) - QuantiFERON-TB Gold", category: "others", specimen: "Heparin", time: "3-4 أيام", price: 1700, conditions: "" },
+  { id: 198, name: "بروتين أميلويد أ (Amyloid A protein) - Amyloid A Protein", category: "others", specimen: "", time: "", price: 400, conditions: "" }
+ ];
+
+    const testsContainer = document.getElementById('testsContainer');
+    const searchInput = document.getElementById('searchInput');
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const cartIcon = document.getElementById('cartIcon');
+    const cartModal = document.getElementById('cartModal');
+    const closeCart = document.getElementById('closeCart');
+    const overlay = document.getElementById('overlay');
+    const cartItems = document.getElementById('cartItems');
+    const cartSummary = document.getElementById('cartSummary');
+    const cartTotal = document.getElementById('cartTotal');
+    const cartCount = document.getElementById('cartCount');
+    const toast = document.getElementById('toast');
+
+    </script>
+
+
+   
+
+    <script>
+
+    let cart = [];
+
+    // حفظ العربة في localStorage
+    function saveCart() {
+        localStorage.setItem('labCart', JSON.stringify(cart));
+    }
+
+    // استرجاع العربة من localStorage
+    function loadCart() {
+        const stored = localStorage.getItem('labCart');
+        if (stored) {
+            cart = JSON.parse(stored);
+        }
+    }
+
+    // عرض التحاليل في الصفحة
+    function displayTests(tests) {
+        testsContainer.innerHTML = '';
+        if (tests.length === 0) {
+            testsContainer.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">لا توجد نتائج مطابقة</p>';
+            return;
+        }
+
+        tests.forEach(test => {
+            const testCard = document.createElement('div');
+            testCard.className = 'test-card';
+            testCard.innerHTML = `
+                <div class="test-card-header"><h3>${test.name}</h3></div>
+                <div class="test-card-body">
+                    <div class="test-price">${test.price} LE</div>
+                    <div class="test-details">
+                        <p><span>العينة:</span> ${test.specimen}</p>
+                        <p><span>المدة:</span> ${test.time}</p>
+                        ${test.conditions ? `<p><span>الشروط:</span> ${test.conditions}</p>` : ''}
+                    </div>
+                    <button class="add-to-cart" data-id="${test.id}">إضافة إلى العربة</button>
+                </div>
+            `;
+            testsContainer.appendChild(testCard);
+        });
+
+        document.querySelectorAll('.add-to-cart').forEach(btn => {
+            btn.addEventListener('click', addToCart);
+        });
+    }
+
+    // تحديث العربة في الواجهة والتخزين
+    function updateCart() {
+        cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+
+        if (cart.length === 0) {
+            cartItems.innerHTML = `<div class="empty-cart"><i class="fas fa-shopping-cart"></i><p>عربة التسوق فارغة</p></div>`;
+            cartSummary.style.display = 'none';
+            return;
+        }
+
+        cartItems.innerHTML = '';
+        let total = 0;
+
+        cart.forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'cart-item';
+            itemDiv.innerHTML = `
+                <div class="cart-item-info">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-price">${item.price} LE × ${item.quantity}</div>
+                </div>
+                <button class="remove-from-local" data-id="${item.id}" style="color: red; background: none; border: none; font-size: 30px; cursor: pointer;">
+                    x 
+                </button>
+            `;
+            cartItems.appendChild(itemDiv);
+        });
+
+        // زر الحذف لكل عنصر
+        document.querySelectorAll('.remove-from-local').forEach(btn => {
+            btn.addEventListener('click', removeFromLocalCart);
+        });
+
+        cartTotal.textContent = `${total} LE`;
+        cartSummary.style.display = 'block';
+
+        saveCart(); // حفظ التحديث
+    }
+
+    // إضافة تحليل للعربة
+    function addToCart(e) {
+        const id = parseInt(e.target.getAttribute('data-id'));
+        const test = testsData.find(t => t.id === id);
+        if (!test) return;
+
+        const existing = cart.find(item => item.id === id);
+        if (existing) {
+            existing.quantity += 1;
+        } else {
+            cart.push({ id: test.id, name: test.name, price: test.price, quantity: 1 });
+        }
+
+        updateCart();
+
+        toast.style.display = 'block';
+        setTimeout(() => toast.style.display = 'none', 1000);
+    }
+
+    // حذف عنصر من العربة (نهائي من localStorage)
+    function removeFromLocalCart(e) {
+        const id = parseInt(e.target.getAttribute('data-id'));
+        cart = cart.filter(item => item.id !== id);
+        saveCart(); // ← تحديث التخزين
+        updateCart(); // ← تحديث العرض
+    }
+
+    // زر مسح كل العربة
+    function clearCart() {
+        cart = [];
+        localStorage.removeItem('labCart');
+        updateCart();
+    }
+
+    // فلترة حسب القسم
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            categoryBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const cat = btn.getAttribute('data-category');
+            if (cat === 'all') displayTests(testsData);
+            else displayTests(testsData.filter(t => t.category === cat));
+        });
+    });
+
+    // البحث
+    searchInput.addEventListener('input', () => {
+        const val = searchInput.value.toLowerCase();
+        displayTests(testsData.filter(t => t.name.toLowerCase().includes(val)));
+    });
+
+    // فتح العربة
+    cartIcon.addEventListener('click', () => {
+        cartModal.classList.add('open');
+        overlay.classList.add('active');
+    });
+
+    // إغلاق العربة
+    closeCart.addEventListener('click', () => {
+        cartModal.classList.remove('open');
+        overlay.classList.remove('active');
+    });
+
+    overlay.addEventListener('click', () => {
+        cartModal.classList.remove('open');
+        overlay.classList.remove('active');
+    });
+
+    // تحميل أولي
+    
+
+    const searchButton = document.querySelector(".search-box button");
+const searchNotice = document.getElementById("searchNotice");
+
+searchButton.addEventListener("click", () => {
+    if (searchInput.value.trim() !== "") {
+        searchNotice.style.display = "block";
+    } else {
+        searchNotice.style.display = "none";
+    }
+});
+
+</script>
+
+
+
+<script>
+
+    
+</script>
+
+
+
+
+
+
+
+
+<script>
+let discountApplied = false;
+
+function applyDiscount() {
+    const code = document.getElementById("discountCodeInput").value.trim().toLowerCase();
+    const totalElement = document.getElementById("cartTotal");
+    const messageElement = document.getElementById("discountMessage");
+
+    let currentTotal = parseFloat(totalElement.innerText.replace("LE", "").trim());
+
+    if (discountApplied) {
+        messageElement.innerText = "تم تطبيق الخصم بالفعل";
+        messageElement.style.color = "orange";
+        messageElement.style.display = "block";
+        return;
+    }
+
+    const discountCodes = {
+        "ayman50": 50,
+        "ayman1": 10,
+        "ayman2": 20,
+        "ayman3": 25,
+    };
+
+    if (discountCodes.hasOwnProperty(code)) {
+        let discountPercent = discountCodes[code];
+        let discountedTotal = currentTotal - (currentTotal * discountPercent / 100);
+        totalElement.innerText = discountedTotal.toFixed(2) + " LE";
+        messageElement.innerText = `تم تطبيق خصم ${discountPercent}% بنجاح`;
+        messageElement.style.color = "green";
+        messageElement.style.display = "block";
+
+        // حفظ الخصم في التخزين المحلي ليستمر في صفحة الحجز
+        localStorage.setItem('labDiscount', discountPercent);
+        discountApplied = true;
+    } else {
+        messageElement.innerText = "كود الخصم غير صحيح";
+        messageElement.style.color = "red";
+        messageElement.style.display = "block";
+    }
+}
+
+</script>
+
+
+ <script>
+  function addToCart(e) {
+    const id = parseInt(e.target.getAttribute('data-id'));
+    const test = testsData.find(t => t.id === id);
+    if (!test) return;
+
+    // التحقق مما إذا كان التحليل موجودًا بالفعل في العربة
+    const existing = cart.find(item => item.id === id);
+    if (existing) {
+        // إذا كان التحليل موجودًا، نعرض رسالة بدلاً من زيادة الكمية
+        toast.textContent = "هذا التحليل مضاف بالفعل إلى العربة";
+        toast.style.backgroundColor = "var(--warning-color)";
+        toast.style.display = 'block';
+        setTimeout(() => toast.style.display = 'none', 1000);
+        return;
+    }
+
+    // إذا لم يكن موجودًا، نضيفه
+    cart.push({ id: test.id, name: test.name, price: test.price, quantity: 1 });
+    updateCart();
+
+    toast.textContent = "تمت الإضافة إلى العربة";
+    toast.style.backgroundColor = "var(--success-color)";
+    toast.style.display = 'block';
+    setTimeout(() => toast.style.display = 'none', 1000);
+}
+
+
+function displayTests(tests) {
+    testsContainer.innerHTML = '';
+    if (tests.length === 0) {
+        testsContainer.innerHTML = '<p style="grid-column: 1/-1; text-align: center;">لا توجد نتائج مطابقة</p>';
+        return;
+    }
+
+    tests.forEach(test => {
+        const isInCart = cart.some(item => item.id === test.id);
+        const testCard = document.createElement('div');
+        testCard.className = 'test-card';
+        testCard.innerHTML = `
+            <div class="test-card-header"><h3>${test.name}</h3></div>
+            <div class="test-card-body">
+                <div class="test-price">${test.price} LE</div>
+                <div class="test-details">
+                    <p><span>العينة:</span> ${test.specimen}</p>
+                    <p><span>المدة:</span> ${test.time}</p>
+                    ${test.conditions ? `<p><span>الشروط:</span> ${test.conditions}</p>` : ''}
+                </div>
+                <button class="add-to-cart ${isInCart ? 'added' : ''}" 
+                        data-id="${test.id}"
+                        ${isInCart ? 'disabled' : ''}>
+                    ${isInCart ? 'مضاف بالفعل' : 'إضافة إلى العربة'}
+                </button>
+            </div>
+        `;
+        testsContainer.appendChild(testCard);
+    });
+
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+        btn.addEventListener('click', addToCart);
+    });
+}
+
+
+function updateCart() {
+    cartCount.textContent = cart.length; // الآن نعرض عدد العناصر بدلاً من الكمية
+
+    if (cart.length === 0) {
+        cartItems.innerHTML = `<div class="empty-cart"><i class="fas fa-shopping-cart"></i><p>عربة التسوق فارغة</p></div>`;
+        cartSummary.style.display = 'none';
+    } else {
+        cartItems.innerHTML = '';
+        let total = 0;
+
+        cart.forEach(item => {
+            total += item.price * item.quantity;
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'cart-item';
+            itemDiv.innerHTML = `
+                <div class="cart-item-info">
+                    <div class="cart-item-name">${item.name}</div>
+                    <div class="cart-item-price">${item.price} LE</div>
+                </div>
+                <button class="remove-from-local" data-id="${item.id}" 
+                        style="color: red; background: none; border: none; font-size: 30px; cursor: pointer;">
+                    x 
+                </button>
+            `;
+            cartItems.appendChild(itemDiv);
+        });
+
+        document.querySelectorAll('.remove-from-local').forEach(btn => {
+            btn.addEventListener('click', removeFromLocalCart);
+        });
+
+        cartTotal.textContent = `${total} LE`;
+        cartSummary.style.display = 'block';
+    }
+
+    saveCart();
+    displayTests(testsData); // إعادة عرض التحاليل لتحديث أزرار الإضافة
+}
+
+</script>
+
+<style>
+    .add-to-cart.added {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.add-to-cart:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+</style>
+
+  
+  
+
+
+
+<script>
+  
+ 
+  
+
+loadCart();
+    displayTests(testsData);
+    updateCart();
+  
+
+</script>
+
+
+
+
+</body>
+</html>
